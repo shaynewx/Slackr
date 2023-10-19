@@ -1,0 +1,254 @@
+.page {
+  display: none;
+  background-color: #fbdb04;
+  margin: auto 5px;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a:link {
+  color: #656769; /* 未访问的链接颜色 */
+}
+
+a:visited {
+  color: #656769; /* 已访问的链接颜色 */
+}
+
+a:hover {
+  color: #007bff; /* 鼠标悬停时的链接颜色 */
+}
+
+.nav-list {
+  font-size: larger;
+}
+
+/* 以下为home页面 */
+.slogan {
+  font-size: 30px;
+  font-weight: bold;
+  color: #1a1a1a;
+  margin: 20px auto auto 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.signin-form {
+  background-color: white;
+  width: 300px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 40px;
+  text-align: center;
+  position: relative;
+  z-index: 100;
+  border-radius: 18px;
+  overflow: hidden; /* 隐藏多余的模糊效果*/
+}
+
+.input-style {
+  font-size: large;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  width: 250px;
+  height: 40px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 0 10px;
+}
+
+.signin-button {
+  display: block;
+  margin: 0 auto;
+  margin: 6px 0;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.3);
+  font-size: 17px;
+  color: #3d5245;
+  border-radius: 5px;
+  padding: 0 50px;
+  color: #3d5245;
+}
+
+.signin-button:hover {
+  background-color: #007bff;
+  color: #fff;
+  border: 1px solid #0056b3;
+}
+
+.remember-password {
+  margin: 10px 0;
+}
+
+.register-invite {
+  font-size: larger;
+  margin: 20px 0 20px 60px;
+  padding: 100px 0 100px 0;
+}
+
+.register-button {
+  display: block;
+  margin: 0 auto;
+  margin: 6px 0;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.3);
+  font-size: 17px;
+  color: #3d5245;
+  border-radius: 5px;
+  padding: 0 14px;
+  color: #3d5245;
+}
+
+.register-button:hover {
+  background-color: #007bff;
+  color: #fff;
+  border: 1px solid #0056b3;
+}
+
+/* 以下为Register页面 */
+
+.register-form {
+  /* background-color: white; */
+  width: 390px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  margin: auto auto;
+  padding: 40px;
+  text-align: center;
+  position: relative;
+  z-index: 100;
+  border-radius: 18px;
+  overflow: hidden; /* 隐藏多余的模糊效果*/
+}
+
+/* 频道页面 */
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 800px;
+}
+
+.left-box {
+  width: 30%;
+  margin: 20px 0 20px 20px;
+  background-color: white;
+}
+
+.right-box {
+  width: 70%;
+  margin: 20px 20px 20px 0;
+  background-color: white;
+}
+
+.channels-list {
+  height: 82%;
+  background-color: #f7f5f6;
+}
+
+.channel-name {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+
+
+
+/* 频道list设置 */
+ul {
+  list-style-type: none; /* 移除列表符号 */
+}
+
+.toggle {
+  cursor: pointer;
+}
+
+.lists {
+  list-style-type: none;
+}
+
+/* 设置不同的背景颜色 */
+.lists li {
+  background-color: white;
+
+  margin-right: 35px;
+  height: 35px;
+  border-radius: 5px;
+  padding-top: 5%;
+  padding-left: 5%;
+}
+
+.lists li:hover {
+  background-color: #faebea; /* 鼠标悬停时改变颜色 */
+  cursor: pointer;
+}
+
+
+.add-channel {
+  margin-top: 10px;
+  margin-left: 25%;
+  height: 35px;
+  background-color: rgba(255, 255, 255, 0.3);
+  font-size: 16px;
+  color: #3d5245;
+  border-radius: 5px;
+  padding: 0 25px;
+  color: #3d5245;
+}
+
+.add-channel:hover {
+  background-color: #007bff;
+  color: #fff;
+  border: 1px solid #0056b3;
+}
+
+.user-info {
+  height: 15%;
+  background-color: #f7f5f6;
+  border-top: 1px solid #efebed; /* 设置上边框，可以更改颜色和宽度 */
+}
+
+.user-container {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 10px;
+}
+
+.profile-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #1a1a1a;
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+.user-name {
+  margin-top: 35px;
+  margin-left: 20px;
+  font-size: 15px;
+}
+
+.channel-information {
+  height: 8%;
+  margin: 10px 10px;
+  padding: 5px 5px;
+  background-color: #f7f5f6;
+}
+
+.chat-box {
+  height: 65%;
+  margin: 2px 5px;
+  /* border: 1px solid #c6b9bf; */
+  background-color: white;
+}
+
+.input-box {
+  height: 20%;
+  margin: 2px 10px;
+  border: 1px solid #c6b9bf;
+  background-color: white;
+}
