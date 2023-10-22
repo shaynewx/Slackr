@@ -16,7 +16,25 @@
       rel="stylesheet"
       type="text/css"
       media="screen"
-      href="styles/mystyle.css"
+      href="styles/home.css"
+    />
+    <link
+    rel="stylesheet"
+    type="text/css"
+    media="screen"
+    href="styles/signin.css"
+    />
+    <link
+    rel="stylesheet"
+    type="text/css"
+    media="screen"
+    href="styles/register.css"
+    />
+    <link
+    rel="stylesheet"
+    type="text/css"
+    media="screen"
+    href="styles/channel.css"
     />
     <script type="module" src="src/helpers.js"></script>
   </head>
@@ -28,6 +46,7 @@
       <nav class="nav-list">
         <ul>
           <li class="nav-list-item"><a href="#/home">Home</a></li>
+          <!-- <li class="nav-list-item"><a href="#/signin">Sign in</a></li> -->
           <li class="nav-list-item"><a href="#/channels">Channels</a></li>
           <li class="nav-list-item"><a href="#/myprofile">My Profile</a></li>
         </ul>
@@ -42,19 +61,37 @@
         <div class="slogan">
           No matter where you are, slackr will be with you.
         </div>
-        <form action="" method="post" class="signin-form">
+          <p class="smtxt">
+            Already have an account? <a href="#/signin">Sign in</a>
+          </p>
+        </div>
+      </div>
+
+
+
+
+
+
+      <!-- 登录 -->
+      <div class="page signin">
+        <div class="slogan">
+          No matter where you are, slackr will be with you.
+        </div>
+        <form class="signin-form">
           <h2>Sign in</h2>
           <input
             type="text"
             placeholder="Email"
-            name="username"
+            name="email"
             class="input-style"
+            id="signin-email"
           />
           <input
             type="password"
             placeholder="Password"
             name="password"
             class="input-style"
+            id="signin-password"
           />
           <div class="remember-password">
             <input id="remember" type="checkbox" />
@@ -63,7 +100,14 @@
           <p class="smtxt">
             <a href="#/reset-password">Forgot password?</a>
           </p>
-          <button class="signin-button">Sign in</button>
+
+          <!-- 添加一个隐藏的提示文本框 -->
+          <textarea
+            type="text"
+            id="signinErrorMessage"
+            class="signinErrorMessage hidden password-message"
+            ></textarea>
+          <button id="signin-button" class="signin-button">Sign in</button>
         </form>
         <div class="register-invite">
           <p class="smtxt">
@@ -71,45 +115,71 @@
           </p>
         </div>
       </div>
+          <!-- 错误弹窗 -->
+      <div id="errorPopup" class="popup hidden">
+        <div class="popup-content">
+          <span id="closePopup" class="close">&times;</span>
+          <p id="popupMessage"></p>
+      </div>
+      </div>
+
+
+
+
 
       <!-- 注册页面 -->
       <div class="page register">
+        <div class="slogan">
+          No matter where you are, slackr will be with you.
+        </div>
+
+        
         <form action="" method="post" class="register-form">
           <h2>Create an account</h2>
-
           <input
             type="text"
             placeholder="Email"
             name="email"
             class="input-style"
+            id="email"
           />
           <input
             type="text"
             placeholder="Name"
             name="username"
             class="input-style"
+            id="username"
           />
           <input
             type="password"
             placeholder="Password"
             name="password"
             class="input-style"
+            id="password"
           />
-
           <input
             type="password"
             placeholder="Confirm Password"
             name="password2"
             class="input-style"
+            id="confirmPassword"
           />
+          <!-- 添加一个隐藏的提示文本框 -->
+          <textarea
+            type="text"
+            id="passwordMismatchMessage"
+            class="password-message hidden"
+          ></textarea>
+
           <button class="register-button">Submit</button>
         </form>
         <div class="register-invite">
           <p class="smtxt">
-            Already have an account? <a href="#/home">Sign in</a>
+            Already have an account? <a href="#/signin">Sign in</a>
           </p>
         </div>
       </div>
+
 
       <!-- 频道页面 -->
       <div class="page channels">
@@ -117,14 +187,18 @@
           <div class="left-box">
             <div class="channels-list">
               <div>
-                <div class="channel-name"><span class="toggle">▼</span> Public Channels</div>
+                <div class="channel-name">
+                  <span class="toggle">▼</span> Public Channels
+                </div>
                 <ul class="lists">
                   <li class="channel-content"># channel1</li>
                   <li class="channel-content"># channel2</li>
                 </ul>
               </div>
               <div>
-                <div class="channel-name"><span class="toggle">▼</span> Private Channels</div>
+                <div class="channel-name">
+                  <span class="toggle">▼</span> Private Channels
+                </div>
                 <ul class="lists">
                   <li class="channel-content"># channel1</li>
                   <li class="channel-content"># channel2</li>
@@ -136,8 +210,9 @@
               <div class="user-container">
                 <div class="profile-photo"></div>
                 <div class="user-name">用户名</div>
-              </div>
+                <button>Sign out</button>
 
+              </div>
             </div>
           </div>
           <div class="right-box">
@@ -145,12 +220,13 @@
             <div class="chat-box">聊天框</div>
             <div class="input-box">
               <button>表情</button>
-              <input type="text" placeholder="Type your message">
+              <input type="text" placeholder="Type your message" />
               <button>发送</button>
             </div>
           </div>
         </div>
       </div>
+
 
       <!-- 个人信息页面 -->
       <div class="page myprofile">个人信息</div>
@@ -161,5 +237,9 @@
     </footer>
     <script type="module" src="src/main.js"></script>
     <script type="module" src="src/myjs.js"></script>
+    <script type="module" src="src/signin.js"></script>
+    <script type="module" src="src/register.js"></script>
+    <script type="module" src="src/channel.js"></script>
+
   </body>
 </html>
