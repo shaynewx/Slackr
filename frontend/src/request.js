@@ -1,77 +1,59 @@
-const defaultOptions = {
-  method: "GET",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  credentials: "include",
-};
+const baseUrl = "http://localhost:5005";
 
-//获取数据
+// 获取令牌
+function getToken() {
+  return localStorage.getItem("token");
+}
+
+// 设置令牌
+function setToken(token) {
+  localStorage.setItem("token", token);
+}
+
+// 获取数据
 function get(url) {
-  return fetch(url, {
-    ...defaultOptions,
+  const token = getToken();
+  return fetch(`${baseUrl}${url}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
   })
     .then((res) => res.json())
-    .then((data) => data)
     .catch((err) => {
       console.log(err);
       alert(`错误信息：${err.message}`);
     });
 }
 
-//发送数据
-// function post(url, data) {
-//     return fetch(url, {
-//         ...defaultOptions,
-//         method: "POST",
-//         body: JSON.stringify(data),
-//     })
-//         .then((res) => res.json())
-//         .then((data) => {
-//             if (data.error) {
-//                 alert("error message", data.error);
-//                 return;
-//             }
-//             return data;
-
-//         })
-//         .catch((err) => {
-//             console.log(err);
-//             alert(`错误信息：${err.message}`);
-//         });
-// }
-
-
-
+// 发送数据给后端
 function post(url, data) {
-    return new Promise((resolve, reject) => {
-      // 发起HTTP POST请求到指定路径（url）
-      fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json", // 指定请求体的内容类型为JSON
-        },
-        body: JSON.stringify(data), // 将JavaScript对象转换为JSON字符串并作为请求体
+  return new Promise((resolve, reject) => {
+    fetch(`${baseUrl}${url}`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.error) {
+          reject(data.error);
+        } else if (data.token) { // 如果响应中有令牌，则保存它
+          setToken(data.token);
+          resolve(data);
+        } else {
+          resolve(data);
+        }
       })
-        .then((response) => response.json()) // 解析响应为JSON格式
-        .then((data) => {
-          if (data.error) {
-            alert(data.error); // 如果API响应包含错误信息，显示警告
-            reject(data.error); // 失败时，使用 reject 方法拒绝 Promise
-          } else {
-            resolve(data); // 成功时，使用 resolve 方法解决 Promise 并传递数据
-          }
-        })
-        .catch((error) => {
-          console.error("请求失败:", error);
-          reject(error); // 处理请求错误并拒绝 Promise
-        });
-    });
-  }
-  
-
-  
-
+      .catch((error) => {
+        console.error("请求失败:", error);
+        reject(error);
+      });
+  });
+}
 
 const http = {
   get,

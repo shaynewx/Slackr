@@ -20,8 +20,8 @@
     display: none;
     background: transparent; /* 设置背景为透明 */
     border: none; /* 去掉边框 */
-    
   }
+
   .password-message {
     background: transparent; /* 设置背景为透明 */
     border: none; /* 去掉边框 */

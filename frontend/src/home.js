@@ -9,7 +9,7 @@ function showHomePage() {
 }
 
 function showLoginPage() {
-  console.log("这是登录页面");
+  console.log("这是注册页面");
   document.querySelector(".page.home").style.display = "none";
   document.querySelector(".page.register").style.display = "block";
   document.querySelector(".page.channels").style.display = "none";

@@ -1,9 +1,8 @@
 import  http  from "./request.js";
 
-// 验证用户名、密码格式
+// 验证email格式
 const emailInput = document.getElementById("signin-email");
 const errorMessageElement = document.getElementById("signinErrorMessage");
-const signinForm = document.querySelector(".signin-form");
 
 // 添加 blur 事件监听器
 emailInput.addEventListener("blur", validateEmailFormat);
@@ -37,7 +36,7 @@ const closePopupBtn = document.getElementById('closePopup');
 const popupMessage = document.getElementById('popupMessage');
 
 function showErrorPopup(message) {
-    console.log("showErrorPopup is called with message:", message); // 这行是新添加的
+    console.log("showErrorPopup is called with message:", message); 
     popupMessage.textContent = message;
     errorPopup.classList.remove('hidden');
 }
@@ -56,7 +55,7 @@ closePopupBtn.addEventListener('click', closeErrorPopup);
 
 // 登录接口
 function checkSignin(data) {
-  http.post("http://localhost:5005/auth/login", data)
+  http.post("/auth/login", data)
     .then((res) => {
       console.log("登录成功");
       //缓存token

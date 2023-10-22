@@ -45,10 +45,10 @@
       <h1>Slackr</h1>
       <nav class="nav-list">
         <ul>
-          <li class="nav-list-item"><a href="#/home">Home</a></li>
+          <!-- <li class="nav-list-item"><a href="#/home">Home</a></li> -->
           <!-- <li class="nav-list-item"><a href="#/signin">Sign in</a></li> -->
-          <li class="nav-list-item"><a href="#/channels">Channels</a></li>
-          <li class="nav-list-item"><a href="#/myprofile">My Profile</a></li>
+          <!-- <li class="nav-list-item"><a href="#/channels">Channels</a></li> -->
+          <!-- <li class="nav-list-item"><a href="#/myprofile">My Profile</a></li> -->
         </ul>
       </nav>
     </header>
@@ -115,7 +115,9 @@
           </p>
         </div>
       </div>
-          <!-- 错误弹窗 -->
+      
+      
+      <!-- 错误弹窗 -->
       <div id="errorPopup" class="popup hidden">
         <div class="popup-content">
           <span id="closePopup" class="close">&times;</span>
@@ -132,42 +134,40 @@
         <div class="slogan">
           No matter where you are, slackr will be with you.
         </div>
-
-        
-        <form action="" method="post" class="register-form">
+        <form class="register-form">
           <h2>Create an account</h2>
           <input
             type="text"
             placeholder="Email"
             name="email"
             class="input-style"
-            id="email"
+            id="register-email"
           />
           <input
             type="text"
             placeholder="Name"
             name="username"
             class="input-style"
-            id="username"
+            id="register-username"
           />
           <input
             type="password"
             placeholder="Password"
             name="password"
             class="input-style"
-            id="password"
+            id="register-password"
           />
           <input
             type="password"
             placeholder="Confirm Password"
-            name="password2"
+            name="register-password2"
             class="input-style"
-            id="confirmPassword"
+            id="confirm-password"
           />
           <!-- 添加一个隐藏的提示文本框 -->
           <textarea
             type="text"
-            id="passwordMismatchMessage"
+            id="wrongMessage"
             class="password-message hidden"
           ></textarea>
 
@@ -209,7 +209,7 @@
             <div class="user-info">
               <div class="user-container">
                 <div class="profile-photo"></div>
-                <div class="user-name">用户名</div>
+                <div class="user-name" id="channel-username">用户名</div>
                 <button>Sign out</button>
 
               </div>
@@ -236,7 +236,7 @@
       <p>&copy; Slackr</p>
     </footer>
     <script type="module" src="src/main.js"></script>
-    <script type="module" src="src/myjs.js"></script>
+    <script type="module" src="src/home.js"></script>
     <script type="module" src="src/signin.js"></script>
     <script type="module" src="src/register.js"></script>
     <script type="module" src="src/channel.js"></script>
