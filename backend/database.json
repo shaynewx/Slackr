@@ -66,6 +66,50 @@
     }
   },
   "channels": {
+    "121565": {
+      "name": "My own channel",
+      "creator": 15272,
+      "private": true,
+      "description": "My own channel",
+      "createdAt": "2023-10-26T02:26:13.014Z",
+      "members": [
+        15272
+      ],
+      "messages": []
+    },
+    "168014": {
+      "name": "My own channel2",
+      "creator": 15272,
+      "private": true,
+      "description": "My own channel",
+      "createdAt": "2023-10-26T02:28:52.930Z",
+      "members": [
+        15272
+      ],
+      "messages": []
+    },
+    "190630": {
+      "name": "Second try",
+      "creator": 15272,
+      "private": false,
+      "description": "Second try",
+      "createdAt": "2023-10-26T02:21:17.291Z",
+      "members": [
+        15272
+      ],
+      "messages": []
+    },
+    "781874": {
+      "name": "First try",
+      "creator": 15272,
+      "private": false,
+      "description": "First try",
+      "createdAt": "2023-10-26T02:19:58.263Z",
+      "members": [
+        15272
+      ],
+      "messages": []
+    },
     "813580": {
       "name": "public channel",
       "creator": 15272,

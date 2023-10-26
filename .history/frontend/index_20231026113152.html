@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Slackr</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- You can add your styles and scripts here -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/provided.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/home.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/signin.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/register.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/channel.css"
+    />
+    <script type="module" src="src/helpers.js"></script>
+  </head>
+
+  <body>
+    <!-- This is an example app structure, you can modify this as much as you choose -->
+    <header class="banner">
+      <h1>Slackr</h1>
+      <nav class="nav-list">
+        <ul>
+          <!-- <li class="nav-list-item"><a href="#/home">Home</a></li> -->
+          <!-- <li class="nav-list-item"><a href="#/signin">Sign in</a></li> -->
+          <!-- <li class="nav-list-item"><a href="#/channels">Channels</a></li> -->
+          <!-- <li class="nav-list-item"><a href="#/myprofile">My Profile</a></li> -->
+        </ul>
+      </nav>
+    </header>
+
+    <main role="main">
+      <!-- app goes here -->
+
+      <!-- 主页 -->
+      <div class="page home">
+        <div class="slogan">
+          No matter where you are, slackr will be with you.
+        </div>
+        <div class="vector-image-container">
+          <img src="styles/welcome-imaga.svg" alt="Welcome image" />
+        </div>
+        <p class="smtxt">
+          Already have an account? <a href="#/signin">Sign in</a>
+        </p>
+      </div>
+
+      <!-- 登录 -->
+      <div class="page signin">
+        <div class="slogan">
+          No matter where you are, slackr will be with you.
+        </div>
+        <form class="signin-form">
+          <h2>Sign in</h2>
+          <input
+            type="text"
+            placeholder="Email"
+            name="email"
+            class="input-style"
+            id="signin-email"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            class="input-style"
+            id="signin-password"
+          />
+          <div class="remember-password">
+            <input id="remember" type="checkbox" />
+            <label for="remember">Remember me</label>
+          </div>
+          <p class="smtxt">
+            <a href="#/reset-password">Forgot password?</a>
+          </p>
+
+          <!-- 添加一个隐藏的提示文本框 -->
+          <textarea
+            type="text"
+            id="signinErrorMessage"
+            class="signinErrorMessage hidden password-message"
+          ></textarea>
+          <button id="signin-button" class="signin-button">Sign in</button>
+        </form>
+        <div class="register-invite">
+          <p class="smtxt">
+            First time to use Slackr? <a href="#/register">Register</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- 错误弹窗 -->
+      <div id="errorPopup" class="popup hidden">
+        <div class="popup-content">
+          <span id="closePopup" class="close">&times;</span>
+          <p id="popupMessage"></p>
+        </div>
+      </div>
+
+      <!-- 注册页面 -->
+      <div class="page register">
+        <div class="slogan">
+          No matter where you are, slackr will be with you.
+        </div>
+        <form class="register-form">
+          <h2>Create an account</h2>
+          <input
+            type="text"
+            placeholder="Email"
+            name="email"
+            class="input-style"
+            id="register-email"
+          />
+          <input
+            type="text"
+            placeholder="Name"
+            name="username"
+            class="input-style"
+            id="register-username"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            class="input-style"
+            id="register-password"
+          />
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            name="register-password2"
+            class="input-style"
+            id="confirm-password"
+          />
+          <!-- 添加一个隐藏的提示文本框 -->
+          <textarea
+            type="text"
+            id="wrongMessage"
+            class="password-message hidden"
+          ></textarea>
+
+          <button class="register-button">Submit</button>
+        </form>
+        <div class="register-invite">
+          <p class="smtxt">
+            Already have an account? <a href="#/signin">Sign in</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- 频道页面 -->
+      <div class="page channels">
+        <div class="modal" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Create a new channel</h5>
+              </div>
+              <div class="modal-body">
+                <p>Modal body text goes here.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" id="create-channel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="left-box">
+            <section class="channel-list">
+              <button class="add-channel">Add Channel</button>
+              <div>
+                <div class="channel-name">
+                  <span class="toggle">▼</span> Public Channels
+                </div>
+                <ul id="public-channel-list" class="lists">
+                </ul>
+              </div>
+              <div>
+                <div class="channel-name">
+                  <span class="toggle">▼</span> Private Channels
+                </div>
+                <ul id="private-channel-list" class="lists">
+                </ul>
+              </div>
+            </section>
+
+
+            </section>
+            <div class="user-info">
+              <div class="user-container">
+                <div class="profile-photo"></div>
+                <div class="user-name" id="channel-username">User name</div>
+                <button id="signout-button" class="add-channel">Sign out</button>
+              </div>
+            </div>
+          </div>
+          <div class="right-box">
+            <div class="channel-information">频道信息</div>
+            <div class="chat-box">聊天框</div>
+            <div class="input-box">
+              <button>表情</button>
+              <input type="text" placeholder="Type your message" />
+              <button>发送</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 个人信息页面 -->
+      <div class="page myprofile">个人信息</div>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; Slackr</p>
+    </footer>
+    <script type="module" src="src/main.js"></script>
+    <script type="module" src="src/home.js"></script>
+    <script type="module" src="src/signin.js"></script>
+    <script type="module" src="src/register.js"></script>
+    <script type="module" src="src/channel.js"></script>
+  </body>
+</html>
