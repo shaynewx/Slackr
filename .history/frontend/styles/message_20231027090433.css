@@ -1,0 +1,11 @@
+.message-container{
+    position: relative;
+    display: flex;
+    margin: 10px 0;
+}
+
+.message-logo{
+
+    background-color: grey;
+    margin-right: 10px;
+}

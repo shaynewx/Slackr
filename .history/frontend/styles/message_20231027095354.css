@@ -1,0 +1,32 @@
+.message-container{
+    position: relative;
+    display: flex;
+    margin: 10px 0;
+}
+
+.message-container.mine{
+    justify-content: flex-end;
+    /* background-color: rgba(184, 165, 141, 0.963); */
+}
+
+.message-logo{
+    width: 50px;
+    height: 18px;
+    display: flex;
+    background-color: yellow;
+    border-radius: 5%;
+    margin-right: 10px;
+    padding: 4px;
+}
+
+.message{
+    background-color: #e6e6e6;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5%;
+}
+
+.message-time{
+    background-color:#oioioi;
+    width: 10%;
+}

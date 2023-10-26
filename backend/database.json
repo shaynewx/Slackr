@@ -99,6 +99,17 @@
       ],
       "messages": []
     },
+    "234076": {
+      "name": "My own channel3",
+      "creator": 15272,
+      "private": true,
+      "description": "3",
+      "createdAt": "2023-10-26T22:57:37.234Z",
+      "members": [
+        15272
+      ],
+      "messages": []
+    },
     "781874": {
       "name": "Edit channel8",
       "creator": 15272,

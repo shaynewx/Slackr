@@ -1,0 +1,28 @@
+.message-container{
+    position: relative;
+    display: flex;
+    margin: 10px 0;
+}
+
+.message-container.mine{
+    justify-content: end;
+
+}
+
+.message-logo{
+    width: 50px;
+    height: 18px;
+    display: flex;
+    background-color: yellow;
+    border-radius: 5%;
+    margin-right: 10px;
+    padding: 4px;
+}
+
+.message{
+    width: 80;
+    background-color: #e6e6e6;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5%;
+}
