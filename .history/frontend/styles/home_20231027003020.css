@@ -1,0 +1,59 @@
+.page {
+  display: none;
+  background-color: #fbdb04;
+  margin: auto 5px;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a:link {
+  color: #656769; 
+}
+
+a:visited {
+  color: #656769; 
+}
+
+a:hover {
+  color: #007bff; 
+}
+
+.nav-list {
+  font-size: larger;
+}
+
+
+.smtxt {
+  font-size: 20px;
+  height: 100px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .page {
+    margin: auto 2px;
+    font-size: 14px; 
+  }
+
+  .nav-list {
+    font-size: medium;
+  }
+
+  .smtxt {
+    font-size: 18px;
+    height: 80px;
+    margin-top: 30px;
+  }
+
+  .vector-image-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+  }
+
+  .svg-image {
+    width: 70%;
+    height: auto;
+  }
+}

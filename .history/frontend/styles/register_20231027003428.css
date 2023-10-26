@@ -1,0 +1,41 @@
+/* Register page */
+
+.register-form {
+  background-color: white;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  margin: auto auto;
+  padding: 40px;
+  text-align: center;
+  position: relative;
+  z-index: 100;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.hidden {
+  display: none;
+  background: transparent;
+  border: none;
+}
+
+.password-message {
+  background: transparent;
+  border: none;
+  margin: 8px 0;
+  font-size: 17px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .register-form {
+    width: 90%;  /* change the width to a percentage so it takes up most of the viewport width */
+    padding: 25px;  /* reduce the padding a bit */
+  }
+
+  .password-message {
+    font-size: 15px; /* reduce the font size a bit for smaller screens */
+  }
+}
