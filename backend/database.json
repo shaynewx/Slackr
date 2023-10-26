@@ -100,10 +100,10 @@
       "messages": []
     },
     "781874": {
-      "name": "First try",
+      "name": "Edit channel8",
       "creator": 15272,
       "private": false,
-      "description": "First try",
+      "description": "Edit channel8",
       "createdAt": "2023-10-26T02:19:58.263Z",
       "members": [
         15272
@@ -111,10 +111,10 @@
       "messages": []
     },
     "813580": {
-      "name": "public channel",
+      "name": "Second try",
       "creator": 15272,
       "private": false,
-      "description": "",
+      "description": "Second try",
       "createdAt": "2021-09-13T08:00:03.220Z",
       "members": [
         15272,
