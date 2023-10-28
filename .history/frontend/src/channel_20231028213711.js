@@ -389,6 +389,7 @@ function generateChannelList(channelList) {
 
       channelHeaderContainer.appendChild(buttonsDiv);
 
+      //TODO: message
       messageFunction.showChannelMessage(channelId);
     });
   }

@@ -51,7 +51,7 @@ function sendNewChannelData(newChannelData) {
     .then((res) => {
       console.log("返回response", res);
       console.log("Channel created successfully");
-      //TODO: get channel list
+      //TODO: getchannel list
       getChannelList();
 
     })
@@ -389,6 +389,7 @@ function generateChannelList(channelList) {
 
       channelHeaderContainer.appendChild(buttonsDiv);
 
+      //TODO: 拉取message
       messageFunction.showChannelMessage(channelId);
     });
   }

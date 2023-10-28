@@ -106,23 +106,23 @@ document.addEventListener("DOMContentLoaded", function () {
       if (newPassword && !validatePasswordFormat(newPassword)) {
         alert("Password format is invalid.");
         return;
-      }
-      if (newPassword) {
+    }
+    if (newPassword) {
         updatedInfo.password = newPassword;
-      }
+    }
+
+
 
       if (newUsername && newUsername !== currentInfo.username) {
         updatedInfo.username = newUsername;
       }
 
-      if (newPassword && !validatePasswordFormat(newPassword)) {
-        alert("Password format is invalid.");
-        return;
-      }
-      if (newPassword) {
-        updatedInfo.password = newPassword;
+
+      if (newEmail && newEmail !== currentInfo.email) {
+        updatedInfo.email = newEmail;
       }
 
+      
       if (newBio && newBio !== currentInfo.bio) {
         updatedInfo.bio = newBio;
       }
