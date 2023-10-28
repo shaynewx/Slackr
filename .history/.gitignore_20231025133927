@@ -1,0 +1,8 @@
+node_modules
+database.json
+.parcel-cache
+test1获取数据并填充（加载消息）.html
+test2使用封装的request.html
+test3.html
+request-旧.js
+```

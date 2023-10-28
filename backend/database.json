@@ -4,7 +4,7 @@
       "email": "mia@email.com",
       "name": "Mia",
       "password": "solongbouldercity",
-      "bio": "aaa",
+      "bio": "This is the modified Bio hahaha",
       "image": null,
       "sessionActive": true
     },
@@ -293,7 +293,12 @@
           "edited": false,
           "editedAt": null,
           "pinned": false,
-          "reacts": []
+          "reacts": [
+            {
+              "user": 15272,
+              "react": "❤️"
+            }
+          ]
         },
         {
           "id": 37,
