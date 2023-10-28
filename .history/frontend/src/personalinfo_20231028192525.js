@@ -1,0 +1,1 @@
+const personalInfoButton = document.getElementById("personal-info");

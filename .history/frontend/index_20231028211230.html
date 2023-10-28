@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Slackr</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- You can add your styles and scripts here -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/provided.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/home.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/signin.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/register.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/channel.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/message.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="styles/personalinfo.css"
+    />
+    <script type="module" src="src/helpers.js"></script>
+  </head>
+  <body>
+    <!-- This is an example app structure, you can modify this as much as you choose -->
+    <header class="banner">
+      <h1>Slackr</h1>
+    </header>
+    <main role="main">
+      <!-- app goes here -->
+      <!-- Home page -->
+      <div class="page home">
+        <div class="slogan">
+          No matter where you are, slackr will be with you.
+        </div>
+        <div class="vector-image-container">
+          <img
+            class="svg-image"
+            src="styles/welcome-imaga.svg"
+            alt="Welcome image"
+          />
+        </div>
+        <p class="smtxt">
+          Already have an account? <a href="#/signin">Sign in</a>
+        </p>
+      </div>
+
+      <!-- Sign in -->
+      <div class="page signin">
+        <div class="slogan">
+          No matter where you are, slackr will be with you.
+        </div>
+        <form class="signin-form">
+          <h2>Sign in</h2>
+          <input
+            type="text"
+            placeholder="Email"
+            name="email"
+            class="input-style"
+            id="signin-email"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            class="input-style"
+            id="signin-password"
+          />
+          <div class="remember-password">
+            <input id="remember" type="checkbox" />
+            <label for="remember">Remember me</label>
+          </div>
+          <p class="smtxt">
+            <a href="#/reset-password">Forgot password?</a>
+          </p>
+
+          <!-- A hidden textarea -->
+          <textarea
+            type="text"
+            id="signinErrorMessage"
+            class="signinErrorMessage hidden password-message"
+          ></textarea>
+          <button id="signin-button" class="signin-button">Sign in</button>
+        </form>
+        <div class="register-invite">
+          <p class="smtxt">
+            First time to use Slackr? <a href="#/register">Register</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Error Popup -->
+      <div id="errorPopup" class="popup hidden">
+        <div class="popup-content">
+          <span id="closePopup" class="close">&times;</span>
+          <p id="popupMessage"></p>
+        </div>
+      </div>
+
+      <!-- Rigister page -->
+      <div class="page register">
+        <div class="slogan">
+          No matter where you are, slackr will be with you.
+        </div>
+        <form class="register-form">
+          <h2>Create an account</h2>
+          <input
+            type="text"
+            placeholder="Email"
+            name="email"
+            class="input-style"
+            id="register-email"
+          />
+          <input
+            type="text"
+            placeholder="Name"
+            name="username"
+            class="input-style"
+            id="register-username"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            class="input-style"
+            id="register-password"
+          />
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            name="register-password2"
+            class="input-style"
+            id="confirm-password"
+          />
+          <!-- A hidden textarea -->
+          <textarea
+            type="text"
+            id="wrongMessage"
+            class="password-message hidden"
+          ></textarea>
+
+          <button class="register-button">Submit</button>
+        </form>
+        <div class="register-invite">
+          <p class="smtxt">
+            Already have an account? <a href="#/signin">Sign in</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Channel page -->
+      <div class="page channels">
+        <!-- No.1 modal from bootstrapt -->
+        <div id="modal1" class="modal" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Create a new channel:</h5>
+              </div>
+              <div class="modal-body">
+                <div>
+                  <label for="new-channel-name">Your channel name</label>
+                  <input
+                    id="new-channel-name"
+                    type="text"
+                    placeholder="Channel name"
+                  />
+                </div>
+                <div>
+                  <label for="type">Choose a type</label>
+                  <select id="channel-type" name="type">
+                    <option value="public">Public</option>
+                    <option value="private">Private</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="new-channel-description">Description:</label>
+                  <input
+                    type="text"
+                    id="new-channel-description"
+                    placeholder="Description"
+                  />
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  id="create-channel-close"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  id="create-channel-submit"
+                  class="btn btn-primary"
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Container -->
+        <div class="container">
+          <div class="left-box">
+            <section class="channel-list">
+              <button id="add-channel-button" class="add-channel">
+                Add Channel
+              </button>
+              <div>
+                <div class="channel-name">
+                  <span class="toggle">▼</span> Public Channels
+                </div>
+                <ul id="public-channel-list" class="lists"></ul>
+              </div>
+              <div>
+                <div class="channel-name">
+                  <span class="toggle">▼</span> Private Channels
+                </div>
+                <ul id="private-channel-list" class="lists"></ul>
+              </div>
+            </section>
+            <div class="user-info">
+              <div class="user-container">
+                <img
+                  id = "default-profile-image"
+                  class="svg-image"
+                  src="styles/emoji-default-profile-image.svg"
+                  alt="Profile image"
+                />
+                <div class="user-name" id="channel-username">User name</div>
+                <button id="signout-button" class="add-channel">
+                  Sign out
+                </button>
+                <button id="personal-info-button">Personal Info</button>
+              </div>
+            </div>
+          </div>
+          <div class="right-box">
+            <div
+              id="channel-information-header"
+              class="channel-information-header"
+            >
+              <div></div>
+              <div></div>
+            </div>
+            <!--No.2 modal from bootstrapt -->
+            <div id="modal2" class="modal" tabindex="-1">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Edit channel Information</h5>
+                  </div>
+                  <div class="modal-body">
+                    <div>
+                      <label for="edit-channel-name">New Channel Name:</label>
+                      <input
+                        id="edit-channel-name"
+                        type="text"
+                        placeholder="New Channel Name"
+                      />
+                    </div>
+                    <div>
+                      <label for="new-channel-description"
+                        >New Description:</label
+                      >
+                      <input
+                        type="text"
+                        id="edit-channel-description"
+                        placeholder="New Description"
+                      />
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      id="edit-channel-close"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                    <button
+                      type="button"
+                      id="edit-channel-submit"
+                      class="btn btn-primary"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="main-box" class="chat-box"></div>
+            <div class="input-box">
+              <input
+                class="input-message-box"
+                id="input-message-box"
+                type="text"
+                placeholder="Type your message"
+              />
+
+              <!-- No.3 modal from bootstrapt -->
+              <div id="modal3" class="modal" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Edit this message</h5>
+                    </div>
+                    <div class="modal-body">
+                      <div>
+                        <label for="new-channel-name">New message: </label>
+                        <input
+                          id="edit-new-message-input"
+                          type="text"
+                          placeholder="Type your new message here"
+                        />
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        id="edit-new-message-close"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                      <button
+                        type="button"
+                        id="edit-new-message-submit"
+                        class="btn btn-primary"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- reaction menu -->
+              <div id="reactionMenu" class="hidden-emoji">
+                <span class="emoji" data-emoji="❤️">❤️</span>
+                <span class="emoji" data-emoji="👍">👍</span>
+                <span class="emoji" data-emoji="😂">😂</span>
+              </div>
+
+              <button id="send-message-button">Send</button>
+              <textarea
+                type="text"
+                id="send-message-empty-error"
+                class="signinErrorMessage hidden password-message"
+              ></textarea>
+              <div id="contextMenu" class="context-menu">
+                <ul>
+                  <li class="context-option delete">Delete the message</li>
+                  <li class="context-option edit">Edit the message</li>
+                  <li class="context-option react">
+                    React to the this message
+                  </li>
+                  <li class="context-option pin">Pin the message</li>
+                  <li class="context-option unpin">Unpin the message</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Personal information page -->
+      <div class="page myprofile">
+        <h2>Personal information</h2>
+
+        <!-- Profile Picture -->
+        <div class="profile-field">
+          Profile Photo:
+          <img id="profileImage" alt="User Profile Image" src="" width="100" />
+        </div>
+        <!-- Name -->
+        <div class="profile-field">
+          User Name: <span id="usernameDisplay"></span>
+        </div>
+        <!-- Email -->
+        <div class="profile-field">Email: <span id="emailDisplay"></span></div>
+        <!-- Bio -->
+        <div class="profile-field">Bio: <span id="bioDisplay"></span></div>
+
+        <!-- Update Button -->
+        <button id="update-profile-button">Update Profile</button>
+
+        <!-- Sign out Button -->
+        <button onclick="location.href='#/channels'">Back to channel</button>
+
+        <!-- Change Personal information -->
+        <div id="change-profile-box" >
+          <div> 
+            <label>New Password :</label>
+            <input type="password" placeholder="Type your new password:"  id="new-password"/>
+          </div>
+          <div>          
+            <label>Your new name :</label>
+            <input type="text" placeholder="Type your new name:"  id="new-username"/></div>
+
+            <div>
+              <label>Your new email :</label>
+              <input type="text" placeholder="Type your new email:"  id="new-email"/>
+            </div>
+
+            <div>
+              <label>Your new bio :</label>
+              <input type="text" placeholder="Type your new bio:"  id="new-bio"/>
+            </div>
+
+          <div>
+            <button>Submit</button>
+            <button>Cancel</button>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; Slackr</p>
+    </footer>
+    <script type="module" src="src/main.js"></script>
+    <script type="module" src="src/request.js"></script>
+    <script type="module" src="src/user.js"></script>
+    <script type="module" src="src/home.js"></script>
+    <script type="module" src="src/signin.js"></script>
+    <script type="module" src="src/register.js"></script>
+    <script type="module" src="src/channel.js"></script>
+    <script type="module" src="src/message.js"></script>
+    <script type="module" src="src/personalinfo.js"></script>
+  </body>
+</html>

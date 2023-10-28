@@ -1,0 +1,27 @@
+.profile-field {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 5px;
+
+}
+
+.page.myprofile {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#default-profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+#personal-info-button {
+    heigh
+
+}

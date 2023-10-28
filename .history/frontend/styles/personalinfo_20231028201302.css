@@ -1,0 +1,14 @@
+.profile-field {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 5px;
+
+}
+
+.page.myprofile {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
