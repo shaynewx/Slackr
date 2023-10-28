@@ -275,6 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Message content unchanged.");
             return;
           }
+          // 发送请求，并且关闭modal，渲染新消息，新消息指明已经被编辑，以及时间戳
           http
             .put(
               `/message/${currentChannelId}/${currentMessageId}`,
@@ -290,10 +291,10 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
       } else if (this.classList.contains("pin")) {
-        // TODO:Perform pinned message operations
+        // TODO:执行固定消息的操作
         console.log("Pin the message");
       } else if (this.classList.contains("unpin")) {
-        //TODO:Perform unpinned message operations
+        //TODO:执行取消消息的操作
         console.log("Unpin the message");
       }
     });

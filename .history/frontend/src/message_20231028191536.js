@@ -139,7 +139,7 @@ function showChannelMessage(channelId, start = 0) {
   });
 }
 
-// send message
+// 发送消息
 const sendMessageButton = document.getElementById("send-message-button");
 const messageInput = document.getElementById("input-message-box");
 const errorDom = document.getElementById("send-message-empty-error");
@@ -154,26 +154,32 @@ function hideErrorMessage() {
   errorDom.classList.add("hidden");
 }
 
-// listen to input, obtain the content of the input box, and send the message
+// 监听input
 messageInput.addEventListener("click", function () {
   hideErrorMessage();
 });
 
+// 监听发送按钮，获取输入框内容，发送消息
 sendMessageButton.addEventListener("click", () => {
+  // 先查看messageInput是否为空
   const messageContent = messageInput.value;
+  //input没有被编辑时，发送按钮不可用
   if (!messageContent.trim() || messageContent === messageInput.defaultValue) {
     console.log("message is null");
     showErrorMessage("Message can not be empty");
     return;
   }
 
+  // 发送消息
   const channelId = localStorage.getItem("Current channelId");
   currentChannelId = channelId;
   console.log("currentChannelId", currentChannelId);
   http
     .post(
       `/message/${channelId}`,
-      {message: messageContent,},
+      {
+        message: messageContent,
+      },
       true
     )
     .then((res) => {
@@ -184,10 +190,11 @@ sendMessageButton.addEventListener("click", () => {
     });
 });
 
-// listen to right-click message menu
+// 监听右键消息菜单
 document.addEventListener("DOMContentLoaded", function () {
   const contextOptions = document.querySelectorAll(".context-option");
   const reactionMenu = document.getElementById("reactionMenu");
+
   const modal = document.getElementById("modal3");
   const editMessageSubmit = document.getElementById("edit-new-message-submit");
   const editMessageInput = document.getElementById("edit-new-message-input");
@@ -202,32 +209,38 @@ document.addEventListener("DOMContentLoaded", function () {
     modal.style.display = "none";
   };
 
+  // 监听关闭按钮的点击事件
   closeEditMessage.addEventListener("click", () => {
     hideModal();
   });
+
   const showReactionMenu = (x, y) => {
     reactionMenu.style.top = y + "px";
     reactionMenu.style.left = x + "px";
     reactionMenu.style.display = "block";
   };
 
-  // Add event listener for "React" option
+  // 为"React"选项添加事件监听器
+  // 注意：这里我们移到了外部，以确保监听器在页面加载时就被添加
   document
     .querySelector(".context-option.react")
     .addEventListener("click", function (e) {
+      // 停止事件冒泡，防止其他可能的事件处理程序干扰
       e.stopPropagation();
       const contextMenu = document.getElementById("contextMenu");
-      contextMenu.style.display = "none";
+      contextMenu.style.display = "none"; // 隐藏右键菜单
 
       showReactionMenu(e.pageX, e.pageY);
     });
-  // Add click event listener for each emoji
+
+  // 为每个表情符号添加点击事件监听器
   reactionMenu.querySelectorAll(".emoji").forEach((emoji) => {
     emoji.addEventListener("click", function () {
       const reaction = this.getAttribute("data-emoji");
       console.log(
         `User reacted with ${reaction} to message ${currentMessageId}`
       );
+      // TODO: 根据需要保存或显示反应
       http
         .post(
           `/message/react/${currentChannelId}/${currentMessageId}`,
@@ -247,34 +260,38 @@ document.addEventListener("DOMContentLoaded", function () {
       e.stopPropagation();
       currentChannelId = localStorage.getItem("Current channelId");
       if (this.classList.contains("delete")) {
-        // delete the message
+        // 执行删除消息的操作
         console.log("Delete the message");
+        // currentChannelId = localStorage.getItem("Current channelId");
         console.log(currentChannelId, currentMessageId);
         http
           .deleteReq(`/message/${currentChannelId}/${currentMessageId}`, true)
           .then((res) => {
+            // 渲染消息
             showChannelMessage(currentChannelId);
           });
       } else if (this.classList.contains("edit")) {
+        // 执行编辑消息的操作
         console.log("Edit the message");
         showModal();
-
-        // Monitor the submit button of the edit message 
-        // (you need to first monitor whether the input is empty and whether it is consistent with the current message content)
+        // 监听编辑消息的提交按钮（需要先监听input是否为空，以及是否与当前的消息内容一致）
         editMessageSubmit.addEventListener("click", () => {
           const newMessageContent = editMessageInput.value;
           const currentMessageContent = document.querySelector(
             `[data-id="${currentMessageId}"]`
           ).textContent;
+          //input没有被编辑时，发送按钮不可用
           if (!newMessageContent.trim()) {
             console.log("message is null");
             alert("Message can not be empty.");
             return;
+            // 消息内容与当前消息内容一致时的处理
           } else if (newMessageContent === currentMessageContent) {
             console.log("message repeat");
             alert("Message content unchanged.");
             return;
           }
+          // 发送请求，并且关闭modal，渲染新消息，新消息指明已经被编辑，以及时间戳
           http
             .put(
               `/message/${currentChannelId}/${currentMessageId}`,
@@ -290,10 +307,10 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
       } else if (this.classList.contains("pin")) {
-        // TODO:Perform pinned message operations
+        // TODO:执行固定消息的操作
         console.log("Pin the message");
       } else if (this.classList.contains("unpin")) {
-        //TODO:Perform unpinned message operations
+        //TODO:执行取消消息的操作
         console.log("Unpin the message");
       }
     });

@@ -247,34 +247,37 @@ document.addEventListener("DOMContentLoaded", function () {
       e.stopPropagation();
       currentChannelId = localStorage.getItem("Current channelId");
       if (this.classList.contains("delete")) {
-        // delete the message
+        // 执行删除消息的操作
         console.log("Delete the message");
         console.log(currentChannelId, currentMessageId);
         http
           .deleteReq(`/message/${currentChannelId}/${currentMessageId}`, true)
           .then((res) => {
+            // 渲染消息
             showChannelMessage(currentChannelId);
           });
       } else if (this.classList.contains("edit")) {
+        // 执行编辑消息的操作
         console.log("Edit the message");
         showModal();
-
-        // Monitor the submit button of the edit message 
-        // (you need to first monitor whether the input is empty and whether it is consistent with the current message content)
+        // 监听编辑消息的提交按钮（需要先监听input是否为空，以及是否与当前的消息内容一致）
         editMessageSubmit.addEventListener("click", () => {
           const newMessageContent = editMessageInput.value;
           const currentMessageContent = document.querySelector(
             `[data-id="${currentMessageId}"]`
           ).textContent;
+          //input没有被编辑时，发送按钮不可用
           if (!newMessageContent.trim()) {
             console.log("message is null");
             alert("Message can not be empty.");
             return;
+            // 消息内容与当前消息内容一致时的处理
           } else if (newMessageContent === currentMessageContent) {
             console.log("message repeat");
             alert("Message content unchanged.");
             return;
           }
+          // 发送请求，并且关闭modal，渲染新消息，新消息指明已经被编辑，以及时间戳
           http
             .put(
               `/message/${currentChannelId}/${currentMessageId}`,
@@ -290,10 +293,10 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
       } else if (this.classList.contains("pin")) {
-        // TODO:Perform pinned message operations
+        // TODO:执行固定消息的操作
         console.log("Pin the message");
       } else if (this.classList.contains("unpin")) {
-        //TODO:Perform unpinned message operations
+        //TODO:执行取消消息的操作
         console.log("Unpin the message");
       }
     });

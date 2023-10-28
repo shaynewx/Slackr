@@ -260,21 +260,24 @@ document.addEventListener("DOMContentLoaded", function () {
         showModal();
 
         // Monitor the submit button of the edit message 
-        // (you need to first monitor whether the input is empty and whether it is consistent with the current message content)
+        、、(you need to first monitor whether the input is empty and whether it is consistent with the current message content)
         editMessageSubmit.addEventListener("click", () => {
           const newMessageContent = editMessageInput.value;
           const currentMessageContent = document.querySelector(
             `[data-id="${currentMessageId}"]`
           ).textContent;
+          //input没有被编辑时，发送按钮不可用
           if (!newMessageContent.trim()) {
             console.log("message is null");
             alert("Message can not be empty.");
             return;
+            // 消息内容与当前消息内容一致时的处理
           } else if (newMessageContent === currentMessageContent) {
             console.log("message repeat");
             alert("Message content unchanged.");
             return;
           }
+          // 发送请求，并且关闭modal，渲染新消息，新消息指明已经被编辑，以及时间戳
           http
             .put(
               `/message/${currentChannelId}/${currentMessageId}`,
@@ -290,10 +293,10 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
       } else if (this.classList.contains("pin")) {
-        // TODO:Perform pinned message operations
+        // TODO:执行固定消息的操作
         console.log("Pin the message");
       } else if (this.classList.contains("unpin")) {
-        //TODO:Perform unpinned message operations
+        //TODO:执行取消消息的操作
         console.log("Unpin the message");
       }
     });

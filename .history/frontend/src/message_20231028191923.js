@@ -293,7 +293,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // TODO:Perform pinned message operations
         console.log("Pin the message");
       } else if (this.classList.contains("unpin")) {
-        //TODO:Perform unpinned message operations
+        //TODO:Perform the operation of canceling the message
         console.log("Unpin the message");
       }
     });
