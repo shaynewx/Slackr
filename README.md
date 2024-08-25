@@ -68,7 +68,7 @@ Feel free to fork this project and make your own changes. Pull requests are welc
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Authors
-- **[shaynewx](https://github.com/shaynewx)**
+- **[Shayne Wang](https://github.com/shaynewx)**
 
 ## Acknowledgments
 This project was inspired by the Slack application and aims to provide basic features using Vanilla JavaScript and minimal external libraries.
