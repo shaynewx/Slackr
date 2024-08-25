@@ -31,7 +31,7 @@ This project is a simplified clone of Slack, named "Slackr", built entirely in V
 
 1. Clone the repository to your local machine:
    ```sh
-   git clone <repository-url>
+   git clone git@github.com:shaynewx/Slackr.git
    ```
 
 2. Navigate to the project directory:
