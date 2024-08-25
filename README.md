@@ -17,6 +17,7 @@ This project is a simplified clone of Slack, named "Slackr", built entirely in V
 - **View Messages**: Users can view messages within a channel.
 - **Send Messages**: Users can send new messages to a channel.
 - **Edit and Delete Messages**: Users can edit or delete their own messages.
+- **Reacting to messages**: Users can react and unreact to messages.
 
 ### User Profile
 - **View and Edit Profile**: Users can view and edit their profile information including changing their password and updating their profile picture.
